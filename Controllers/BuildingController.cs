@@ -43,10 +43,10 @@ namespace Demoapp.Controllers
             _dbContext.SaveChanges();
             return Ok(building);
         }
+
         [HttpGet]
         [Route("{id:Guid}")]
-
-        public async Task<IActionResult> GetEmployee(Guid id)
+        public async Task<IActionResult> GetBuilding(Guid id)
         {
             var building = await _dbContext.Buildings.FirstOrDefaultAsync(x => x.Id == id);
             if (building == null)
@@ -58,8 +58,7 @@ namespace Demoapp.Controllers
 
         [HttpPut]
         [Route("{id:Guid}")]
-
-        public async Task<IActionResult> UpdateEmployee(Guid id, BuildingModel obj)
+        public async Task<IActionResult> UpdateBuilding(Guid id, BuildingModel obj)
         {
             Building building = new Building();
             var buildingid = await _dbContext.Buildings.FindAsync(id);
@@ -81,8 +80,7 @@ namespace Demoapp.Controllers
 
         [HttpDelete]
         [Route("{id:Guid}")]
-
-        public async Task<IActionResult> DeleteEmployee(Guid id)
+        public async Task<IActionResult> DeleteBuilding(Guid id)
         {
             var buildingid = await _dbContext.Buildings.FindAsync(id);
             if (buildingid == null)
